@@ -4,18 +4,16 @@ import HeroBannerSlider from '../components/HeroBannerSlider'
 import Reveal from '../components/Reveal'
 import EnquiryForm from '../components/EnquiryForm'
 import SectionHeading from '../components/SectionHeading'
-import ImageCard from '../components/ImageCard'
 import Testimonials from '../components/Testimonials'
 import ValuesStrip from '../components/ValuesStrip'
 import FaqAccordion from '../components/FaqAccordion'
 import { IconArrowRight, IconBook, IconBus, IconCap, IconShield, IconSpark, IconUsers } from '../components/icons'
-import { ACADEMIC_STAGES, WHY_US } from '../data/content'
+import { ACADEMIC_STAGES, WHY_US, HOLISTIC_PROGRAMS, INFRASTRUCTURE } from '../data/content'
 import { SITE } from '../data/site'
 
 import heroImg from '../assets/gallery/27.jpg'
 import heroImg2 from '../assets/gallery/21.jpg'
 import heroImg3 from '../assets/gallery/22.jpg'
-import aboutImg from '../assets/gallery/20.jpg'
 import visionMissionImg from '../assets/images/Vision-Mission.png'
 
 const HIGHLIGHTS = [
@@ -105,6 +103,113 @@ const DEVELOPMENT_AREAS = [
     footer: 'Students learn the importance of fitness and teamwork.',
   },
 ]
+
+const HOLISTIC_DATA = [
+  {
+    title: 'Sports and Physical Education',
+    image: HOLISTIC_PROGRAMS[0].image,
+    intro: 'Sports activities help students develop discipline, teamwork, and physical fitness.',
+    focusLabel: 'Students participate in:',
+    points: ['Outdoor sports','Indoor games','Physical fitness activities','Sports competitions','Yoga and wellness programs'],
+    footer: 'Sports improve both physical health and mental strength.',
+    isEven: true,
+  },
+  {
+    title: 'Cultural and Creative Activities',
+    image: HOLISTIC_PROGRAMS[1].image,
+    intro: 'Cultural activities encourage creativity, expression, and confidence.',
+    focusLabel: 'Students take part in:',
+    points: ['Dance','Music','Drama','Art and craft','Debate competitions','School events and annual functions'],
+    footer: 'Participation in such activities builds communication skills and confidence.',
+    isEven: false,
+  },
+  {
+    title: 'Personality Development and Life Skills',
+    image: HOLISTIC_PROGRAMS[2].image,
+    intro: 'The school emphasizes building essential life skills that help students succeed in the future.',
+    focusLabel: 'Key focus areas include:',
+    points: ['Public speaking skills','Leadership development','Discipline and responsibility','Teamwork and collaboration','Moral and ethical education'],
+    footer: 'Students grow into confident individuals ready to face real-life challenges.',
+    isEven: true,
+  },
+  {
+    title: 'Transportation Facility',
+    image: HOLISTIC_PROGRAMS[3].image,
+    intro: 'Excellence International School offers safe and convenient transportation for students.',
+    focusLabel: 'Transportation features include:',
+    points: ['Well-maintained school buses','Experienced drivers','Fixed routes and schedules','Supervised student travel'],
+    footer: 'This ensures safety and convenience for students and parents.',
+    isEven: false,
+  },
+]
+
+function HolisticSection() {
+  const [active, setActive] = useState(0)
+  const item = HOLISTIC_DATA[active]
+
+  return (
+    <section className="bg-slate-50 py-16 sm:py-20 min-h-screen flex flex-col justify-center">
+      <div className="container-page">
+        {/* Header */}
+        <div className="mb-10 text-center">
+          <span className="text-xs font-bold uppercase tracking-[0.3em] text-gold-500">Holistic Growth</span>
+          <h2 className="mt-3 font-serif text-3xl font-bold text-primary-900 sm:text-4xl">Holistic Development Approach</h2>
+          <div className="mx-auto mt-3 h-0.5 w-14 rounded-full bg-gold-400" />
+        </div>
+
+        {/* Card */}
+        <div className="overflow-hidden rounded-2xl bg-white shadow-[0_8px_40px_rgba(28,35,84,0.10)] ring-1 ring-ink-100">
+          <div className="grid lg:grid-cols-2 lg:min-h-[420px]">
+            {/* Image */}
+            <div className={`${item.isEven ? 'lg:order-1' : 'lg:order-2'}`}>
+              <img
+                key={active}
+                src={item.image}
+                alt={item.title}
+                className="h-64 w-full object-cover sm:h-80 lg:h-full"
+              />
+            </div>
+            {/* Text */}
+            <div className={`flex flex-col justify-center gap-3 p-8 sm:p-10 ${item.isEven ? 'lg:order-2' : 'lg:order-1'}`}>
+              <span className="inline-block w-fit rounded-full bg-primary-900 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-gold-400">
+                0{active + 1} / 0{HOLISTIC_DATA.length}
+              </span>
+              <h3 className="font-serif text-2xl font-bold text-primary-900 sm:text-3xl">{item.title}</h3>
+              <p className="text-sm leading-relaxed text-ink-500 sm:text-base">{item.intro}</p>
+              <p className="text-sm font-semibold text-ink-700">{item.focusLabel}</p>
+              <ul className="space-y-1.5">
+                {item.points.map((pt) => (
+                  <li key={pt} className="flex items-start gap-2 text-sm text-ink-600 sm:text-base">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary-600" />
+                    {pt}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-sm leading-relaxed text-ink-500 sm:text-base">{item.footer}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Buttons */}
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          {HOLISTIC_DATA.map((d, i) => (
+            <button
+              key={d.title}
+              onClick={() => setActive(i)}
+              className={`rounded-full px-4 py-2 text-sm font-bold transition ${
+                i === active
+                  ? 'bg-primary-900 text-white shadow-card'
+                  : 'border border-ink-200 bg-white text-ink-600 hover:border-primary-300 hover:text-primary-800'
+              }`}
+            >
+              {d.title}
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
 
 function StackedCards() {
   const [hovered, setHovered] = useState(false)
@@ -632,52 +737,101 @@ export default function Home() {
       </section>
 
       {/* Holistic development */}
-      <section className="relative overflow-hidden bg-white py-20">
-        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-primary-50/80 to-transparent" />
-        <div className="absolute left-8 top-28 h-32 w-32 rounded-full bg-gold-300/20 blur-3xl" />
-        <div className="absolute bottom-12 right-8 h-40 w-40 rounded-full bg-primary-300/15 blur-3xl" />
+      <HolisticSection />
+
+      {/* Modern Infrastructure */}
+      <section className="relative overflow-hidden bg-primary-900 py-20 text-white">
+        <div className="absolute -left-32 top-0 h-96 w-96 rounded-full bg-gold-400/10 blur-3xl pointer-events-none" />
+        <div className="absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-primary-700/30 blur-3xl pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold-400/20 to-transparent" />
 
         <div className="container-page relative">
           <Reveal>
-            <SectionHeading
-              center
-              eyebrow="Holistic Development Approach"
-              title="Modern Infrastructure for Effective Learning"
-              subtitle="A well-planned campus environment enhances every learner's experience through programs that support academic, creative, social, and physical growth."
-            />
+            <div className="mb-12 text-center">
+              <span className="text-xs font-bold uppercase tracking-[0.3em] text-gold-400">Infrastructure</span>
+              <h2 className="mt-3 font-serif text-3xl font-bold text-white sm:text-4xl">
+                Modern Infrastructure for <span className="italic text-gold-400">Effective Learning</span>
+              </h2>
+              <div className="mx-auto mt-3 h-0.5 w-14 rounded-full bg-gold-400/50" />
+              <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-primary-200 sm:text-base">
+                A well-planned campus environment enhances the learning experience. Excellence International School provides modern facilities that support both academic and extracurricular development.
+              </p>
+            </div>
           </Reveal>
 
-          <div className="mt-14 grid gap-7 md:grid-cols-2 xl:grid-cols-3">
-            {DEVELOPMENT_AREAS.map(({ title, icon: Icon, paragraphs, points, footer }, i) => (
-              <Reveal key={title} delay={i * 80}>
-                <article className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-primary-100 bg-white p-7 shadow-card transition duration-300 hover:-translate-y-1 hover:border-primary-200 hover:shadow-soft">
-                  <div className="absolute right-0 top-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-primary-50 transition group-hover:bg-gold-100" />
-                  <div className="relative flex items-center gap-4">
-                    <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary-700 text-white shadow-card ring-4 ring-primary-100 transition group-hover:bg-gold-400 group-hover:text-primary-900 group-hover:ring-gold-100">
-                      <Icon className="h-7 w-7" />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                title: 'Skill Based Learning',
+                icon: IconCap,
+                texts: [
+                  'Skill-based learning helps students think creatively and logically. It encourages them to apply their knowledge practically and develop innovative ideas.',
+                  'Students gain skills that support academic success and real-life problem solving.',
+                ],
+              },
+              {
+                title: 'Community Service',
+                icon: IconUsers,
+                texts: [
+                  'Community service activities help students understand social responsibility and empathy.',
+                  'By interacting with different communities, students develop awareness, compassion, and interpersonal skills.',
+                ],
+              },
+              {
+                title: 'Experiential Learning',
+                icon: IconBook,
+                texts: [
+                  'Experiential learning connects classroom knowledge with real-life experiences.',
+                  'This method encourages active participation, practical understanding, and deeper engagement with learning.',
+                ],
+              },
+              {
+                title: 'STREAM Education',
+                icon: IconSpark,
+                texts: [
+                  'STREAM education integrates science, technology, reading, engineering, arts, and mathematics to build strong analytical and creative thinking abilities.',
+                  'Students learn to solve problems, think critically, and innovate.',
+                ],
+              },
+              {
+                title: 'Visual & Performing Arts',
+                icon: IconSpark,
+                texts: [
+                  'Artistic activities such as music, dance, drawing, drama, and creative expression help develop imagination and emotional intelligence.',
+                  'These activities improve communication, creativity, and overall personality development.',
+                ],
+              },
+              {
+                title: 'Physical Development Programs',
+                icon: IconShield,
+                texts: ['Physical programs and sports activities help build:'],
+                points: ['Physical strength', 'Leadership skills', 'Strategic thinking', 'Healthy lifestyle habits'],
+                footer: 'Students learn the importance of fitness and teamwork.',
+              },
+            ].map(({ title, icon: Icon, texts, points, footer }, i) => (
+              <Reveal key={title} delay={i * 70}>
+                <div className="group flex h-full flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-7 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-gold-400/25 hover:bg-white/10">
+                  <div className="flex items-center gap-4">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-800 text-gold-400 ring-1 ring-white/10 transition group-hover:bg-gold-400 group-hover:text-primary-900">
+                      <Icon className="h-5 w-5" />
                     </span>
-                    <h3 className="text-xl font-extrabold leading-tight text-primary-900">{title}</h3>
+                    <h3 className="font-serif text-lg font-bold text-white leading-snug">{title}</h3>
                   </div>
-
-                  <div className="relative mt-6 space-y-4 text-sm leading-relaxed text-ink-500 sm:text-base">
-                    {paragraphs.map((paragraph) => (
-                      <p key={paragraph}>{paragraph}</p>
-                    ))}
-
+                  <div className="flex-1 space-y-3 text-sm leading-relaxed text-primary-200">
+                    {texts.map((t, j) => <p key={j}>{t}</p>)}
                     {points && (
-                      <ul className="space-y-2 pt-1">
-                        {points.map((point) => (
-                          <li key={point} className="flex items-start gap-2 font-semibold text-ink-600">
-                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary-700" />
-                            {point}
+                      <ul className="space-y-1.5 pt-1">
+                        {points.map((pt) => (
+                          <li key={pt} className="flex items-start gap-2">
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400" />
+                            {pt}
                           </li>
                         ))}
                       </ul>
                     )}
-
                     {footer && <p>{footer}</p>}
                   </div>
-                </article>
+                </div>
               </Reveal>
             ))}
           </div>
@@ -685,17 +839,23 @@ export default function Home() {
       </section>
 
       {/* Values */}
-      <section className="container-page py-20">
-        <Reveal>
-          <SectionHeading
-            center
-            eyebrow="Value-Based Education"
-            title="Character Alongside Academic Excellence"
-            subtitle="Excellence International School strongly believes in developing moral values that shape confident, responsible individuals."
-          />
-        </Reveal>
-        <div className="mt-12">
-          <ValuesStrip />
+      <section className="bg-white py-20">
+        <div className="container-page">
+          <Reveal>
+            <div className="mb-12 text-center">
+              <span className="text-xs font-bold uppercase tracking-[0.3em] text-gold-500">Value-Based Education</span>
+              <h2 className="mt-3 font-serif text-3xl font-bold text-primary-900 sm:text-4xl">
+                Character Alongside <span className="italic text-primary-600">Academic Excellence</span>
+              </h2>
+              <div className="mx-auto mt-3 h-0.5 w-14 rounded-full bg-gold-400" />
+              <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-ink-500 sm:text-base">
+                Excellence International School strongly believes in developing moral values along with academic excellence.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={100}>
+            <ValuesStrip />
+          </Reveal>
         </div>
       </section>
 
@@ -712,20 +872,26 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section className="container-page py-20">
-        <Reveal>
-          <SectionHeading center eyebrow="FAQs" title="Frequently Asked Questions" />
-        </Reveal>
-        <div className="mt-12">
-          <FaqAccordion />
+      <section className="bg-primary-50 py-20">
+        <div className="container-page">
+          <Reveal>
+            <div className="mb-10 text-center">
+              <span className="text-xs font-bold uppercase tracking-[0.3em] text-gold-500">FAQs</span>
+              <h2 className="mt-3 font-serif text-3xl font-bold text-primary-900 sm:text-4xl">Frequently Asked Questions</h2>
+              <div className="mx-auto mt-3 h-0.5 w-14 rounded-full bg-gold-400" />
+            </div>
+          </Reveal>
+          <div className="mx-auto max-w-3xl">
+            <FaqAccordion />
+          </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="container-page pb-24">
-        <Reveal className="flex flex-col items-center justify-between gap-6 rounded-3xl bg-gold-400 p-10 text-center shadow-soft sm:flex-row sm:text-left">
-          <div>
-            <h3 className="text-2xl font-extrabold text-ink-900">
+      <section className="container-page py-16 pb-24">
+        <Reveal className="flex flex-col items-center justify-between gap-6 rounded-3xl bg-gold-400 p-8 text-center shadow-soft sm:flex-row sm:text-left sm:p-10">
+          <div className="flex-1">
+            <h3 className="text-xl font-extrabold text-ink-900 sm:text-2xl">
               Admissions open for {SITE.admissionSession}
             </h3>
             <p className="mt-1 text-sm font-medium text-ink-800/80">
@@ -734,7 +900,7 @@ export default function Home() {
           </div>
           <Link
             to="/contact"
-            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-sm font-bold text-white transition hover:bg-primary-900"
+            className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-sm font-bold text-white transition hover:bg-primary-900 sm:w-auto"
           >
             Contact Admissions <IconArrowRight className="h-4 w-4" />
           </Link>
