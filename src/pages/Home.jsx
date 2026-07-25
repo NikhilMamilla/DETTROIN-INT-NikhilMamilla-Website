@@ -504,76 +504,130 @@ export default function Home() {
       </section>
 
       {/* Learning environment */}
-      <section className="relative overflow-hidden bg-primary-900 py-20 text-white">
-        <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-gold-400/20 blur-3xl" />
-        <div className="absolute -right-16 bottom-0 h-80 w-80 rounded-full bg-primary-500/30 blur-3xl" />
+      <section className="relative min-h-screen overflow-hidden bg-primary-900 py-20 flex flex-col justify-center text-white">
+        <div className="absolute -left-32 top-0 h-[500px] w-[500px] rounded-full bg-gold-400/10 blur-3xl pointer-events-none" />
+        <div className="absolute -right-32 bottom-0 h-[500px] w-[500px] rounded-full bg-primary-700/40 blur-3xl pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold-400/20 to-transparent" />
 
         <div className="container-page relative">
           <Reveal>
-            <div className="mx-auto max-w-3xl text-center">
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-gold-300">
-                Learning Environment
-              </p>
-              <h2 className="mt-4 text-3xl font-extrabold sm:text-4xl">
-                Positive, Motivating & Built for Growth
+            <div className="mb-12 text-center">
+              <span className="text-xs font-bold uppercase tracking-[0.3em] text-gold-400">Learning Environment</span>
+              <h2 className="mt-3 font-serif text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+                Positive, Motivating &amp; Built for Growth
               </h2>
-              <p className="mt-5 text-primary-100">
-                The school provides a happy and disciplined atmosphere where students feel motivated
-                to learn, explore, and achieve their full potential.
+              <div className="mx-auto mt-3 h-0.5 w-14 rounded-full bg-gold-400/50" />
+              <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-primary-200 sm:text-base">
+                The school provides a happy and disciplined atmosphere where students feel motivated to learn, explore, and achieve their full potential.
               </p>
             </div>
           </Reveal>
 
-          <div className="mt-14 grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-            <Reveal delay={100}>
-              <div className="relative mx-auto flex aspect-square max-w-sm items-center justify-center rounded-full border border-white/10 bg-white/5 p-8 shadow-soft backdrop-blur">
-                <div className="absolute inset-8 rounded-full border border-dashed border-gold-300/40" />
-                <div className="absolute inset-16 rounded-full bg-gold-400/10 blur-xl" />
-                <div className="relative rounded-[2rem] bg-white p-8 text-center text-primary-900 shadow-card">
-                  <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gold-400">
-                    <IconCap className="h-8 w-8" />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {LEARNING_ENVIRONMENT.map(({ title, text, icon: Icon }, i) => (
+              <Reveal key={title} delay={i * 80}>
+                <div className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:bg-white/10 hover:border-gold-400/20">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gold-400 text-primary-900">
+                    <Icon className="h-5 w-5" />
                   </span>
-                  <h3 className="mt-5 text-2xl font-extrabold">Inspired Learners</h3>
-                  <p className="mt-3 text-sm font-medium leading-relaxed text-ink-500">
-                    Confidence, curiosity, discipline, and creativity come together in every classroom.
-                  </p>
+                  <h3 className="mt-4 font-serif text-lg font-bold text-white">{title}</h3>
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-primary-200">{text}</p>
                 </div>
-              </div>
-            </Reveal>
-
-            <div className="grid gap-5 sm:grid-cols-2">
-              {LEARNING_ENVIRONMENT.map(({ title, text, icon: Icon }, i) => (
-                <Reveal key={title} delay={150 + i * 80}>
-                  <div className="group relative h-full overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.07] p-6 backdrop-blur transition hover:-translate-y-1 hover:bg-white/[0.11]">
-                    <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-gold-300/10 transition group-hover:bg-gold-300/20" />
-                    <span className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-primary-800 shadow-card">
-                      <Icon className="h-6 w-6" />
-                    </span>
-                    <h3 className="relative mt-5 text-xl font-extrabold">{title}</h3>
-                    <p className="relative mt-3 text-sm leading-relaxed text-primary-100">{text}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Why us */}
-      <section className="container-page py-20">
-        <Reveal>
-          <SectionHeading
-            center
-            eyebrow="Why Choose Us"
-            title="Why Excellence International School is the Best in Aligarh"
-          />
-        </Reveal>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {WHY_US.map((item, i) => (
-            <Reveal key={item.title} delay={i * 100}>
-              <ImageCard image={item.image} title={item.title} description={item.description} />
-            </Reveal>
-          ))}
+      {/* Why us — sticky stack same as Academic Stages */}
+      <section className="bg-white">
+        <div className="container-page py-14 text-center sm:py-16">
+          <span className="text-xs font-bold uppercase tracking-[0.3em] text-gold-500">Why Choose Us</span>
+          <h2 className="mt-3 font-serif text-3xl font-bold text-primary-900 sm:text-4xl">Why Excellence International School is the Best in Aligarh</h2>
+          <div className="mx-auto mt-3 h-0.5 w-14 rounded-full bg-gold-400" />
+        </div>
+
+        <div className="relative">
+          {[
+            {
+              id: 'strong-academic',
+              title: 'Strong Academic System',
+              image: WHY_US[0].image,
+              intro: 'Excellence International School follows a structured and well-planned academic approach to ensure effective learning.',
+              focusLabel: 'The academic framework includes:',
+              points: ['Well-planned daily lessons','Concept-focused teaching','Regular revision sessions','Periodic assessments','Doubt-clearing sessions','Continuous performance monitoring'],
+              footer: 'Teachers guide students individually to help them improve academically and build confidence in learning.',
+            },
+            {
+              id: 'concept-learning',
+              title: 'Concept-Based Learning',
+              image: WHY_US[1].image,
+              intro: 'Education at Excellence International School focuses on understanding concepts rather than memorizing information.',
+              focusLabel: 'Students develop:',
+              points: ['Analytical thinking','Problem-solving abilities','Logical reasoning','Practical knowledge'],
+              footer: 'This approach prepares students for higher studies and future career paths.',
+            },
+            {
+              id: 'faculty',
+              title: 'Experienced and Dedicated Faculty',
+              image: WHY_US[2].image,
+              intro: 'Teachers play a crucial role in shaping students\' future. The faculty at Excellence International School is qualified, experienced, and committed to providing quality education.',
+              focusLabel: 'Teaching methods include:',
+              points: ['Interactive classroom discussions','Activity-based learning','Real-life examples','Student participation','Technology-supported learning'],
+              footer: 'Teachers regularly monitor student progress and provide guidance whenever needed.',
+            },
+            {
+              id: 'safe-campus',
+              title: 'Safe and Secure Campus',
+              image: WHY_US[3].image,
+              intro: 'A secure learning environment helps students focus on their education and development.',
+              focusLabel: 'The school ensures safety through:',
+              points: ['CCTV monitoring','Supervised campus areas','Structured discipline policies','Responsible staff supervision','Safe entry and exit systems'],
+              footer: 'Students can learn and grow in a safe and supportive environment.',
+            },
+          ].map((item, i) => {
+            const isEven = i % 2 === 0
+            const colors = ['bg-white', 'bg-ink-50', 'bg-primary-50', 'bg-gold-50']
+            const isLast = i === 3
+            return (
+              <div key={item.id} className="sticky" style={{ top: `${60 + i * 14}px`, zIndex: 10 + i }}>
+                <div className={`${colors[i]} border-t border-ink-100 shadow-[0_-6px_30px_rgba(0,0,0,0.07)]`}>
+                  <div className="container-page grid items-center gap-8 py-14 sm:gap-10 lg:grid-cols-2 lg:py-20">
+
+                    <div className={`${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
+                      <div className="overflow-hidden rounded-2xl shadow-[0_8px_40px_rgba(28,35,84,0.12)]">
+                        <img src={item.image} alt={item.title} className="h-64 w-full object-cover transition duration-700 hover:scale-105 sm:h-80" />
+                      </div>
+                    </div>
+
+                    <div className={`${isEven ? 'lg:order-1' : 'lg:order-2'} space-y-3`}>
+                      <span className="inline-block rounded-full bg-primary-900 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-gold-400">0{i + 1}</span>
+                      <h3 className="font-serif text-2xl font-bold text-primary-900 sm:text-3xl">{item.title}</h3>
+                      <p className="text-sm leading-relaxed text-ink-500 sm:text-base">{item.intro}</p>
+                      <p className="text-sm font-semibold text-ink-700 sm:text-base">{item.focusLabel}</p>
+                      <ul className="space-y-1.5">
+                        {item.points.map((pt) => (
+                          <li key={pt} className="flex items-start gap-2 text-sm text-ink-600 sm:text-base">
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary-600" />
+                            {pt}
+                          </li>
+                        ))}
+                      </ul>
+                      <p className="text-sm leading-relaxed text-ink-500 sm:text-base">{item.footer}</p>
+                      {isLast && (
+                        <div className="pt-4">
+                          <Link to="/about" className="inline-flex items-center gap-2 rounded-full bg-primary-900 px-6 py-3 text-sm font-bold text-white transition hover:bg-primary-800">
+                            Learn More About Us <IconArrowRight className="h-4 w-4" />
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            )
+          })}
         </div>
       </section>
 
