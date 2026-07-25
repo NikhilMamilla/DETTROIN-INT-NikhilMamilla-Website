@@ -13,10 +13,11 @@
 | **Email** | 23211a05m7@bvrit.ac.in |
 | **Current Organisation & Role** | Student — Web Development Intern Applicant |
 | **Selected Website** | [excellenceinternationalschool.com](https://excellenceinternationalschool.com/) |
-| **GitHub Profile** | *(add your GitHub profile URL)* |
-| **Repository Link** | *(add your GitHub repo URL)* |
-| **Live Demo (Vercel)** | *(add your Vercel URL after deploying)* |
-| **LinkedIn** | *(add your LinkedIn URL)* |
+| **GitHub Profile** | [github.com/NikhilMamilla](https://github.com/NikhilMamilla) |
+| **Repository Link** | [DETTROIN-INT-NikhilMamilla-Website](https://github.com/NikhilMamilla/DETTROIN-INT-NikhilMamilla-Website) |
+| **Live Demo (Vercel)** | [dettroin-int-nikhil-mamilla-website.vercel.app](https://dettroin-int-nikhil-mamilla-website.vercel.app/) |
+| **LinkedIn** | [linkedin.com/in/nikhil-mamilla-823922289](https://www.linkedin.com/in/nikhil-mamilla-823922289/) |
+| **Portfolio** | [nikhilmamilla.me](https://www.nikhilmamilla.me/) |
 
 ---
 
