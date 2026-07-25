@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import HeroBannerSlider from '../components/HeroBannerSlider'
 import Reveal from '../components/Reveal'
 import EnquiryForm from '../components/EnquiryForm'
 import SectionHeading from '../components/SectionHeading'
@@ -105,6 +106,9 @@ const DEVELOPMENT_AREAS = [
 export default function Home() {
   return (
     <>
+      {/* Banner Slider */}
+      <HeroBannerSlider />
+
       {/* Hero */}
       <section className="relative overflow-hidden bg-primary-900 text-white">
         <div className="container-page grid items-center gap-12 py-16 lg:grid-cols-2 lg:py-24">

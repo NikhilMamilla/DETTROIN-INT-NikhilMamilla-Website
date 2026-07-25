@@ -107,3 +107,29 @@ export function IconClock({ className = base }) {
     </svg>
   )
 }
+
+export function IconFacebook({ className = base }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M14.4 8.2V6.6c0-.8.5-1 1-1h1.8V2.5L14.6 2.4c-2.9 0-4.5 1.8-4.5 4.8v1H7.3v3.5h2.8V21h3.7v-9.3h3l.5-3.5h-3Z" />
+    </svg>
+  )
+}
+
+export function IconInstagram({ className = base }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className} aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
+export function IconYoutube({ className = base }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M21.6 7.1s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C15.8 3.9 12 3.9 12 3.9h-.1s-3.8 0-6.7.2c-.4.1-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2 8.8 2 10.5v1.6c0 1.7.2 3.4.2 3.4s.2 1.5.8 2.1c.8.8 1.9.8 2.4.9 1.8.2 6.6.2 6.6.2s3.8 0 6.7-.2c.4-.1 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.7.2-3.4v-1.6c0-1.7-.2-3.4-.2-3.4ZM10 14.4V8.5l5.6 3-5.6 2.9Z" />
+    </svg>
+  )
+}
