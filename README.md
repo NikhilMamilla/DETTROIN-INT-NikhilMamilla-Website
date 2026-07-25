@@ -1,6 +1,7 @@
 # Excellence International School — Website Redesign
 
-> **Dettroin Full Stack Developer Internship — Round 1: Website Redesign Challenge**
+> **Dettroin Web Development Internship — Round 1: Website Redesign Challenge**
+> [www.dettroin.com](https://www.dettroin.com) | request@dettroin.com
 
 ---
 
@@ -8,18 +9,20 @@
 
 | Field | Details |
 |---|---|
-| **Full Name** | Nikhil |
-| **Intern ID** | *(add your Intern ID)* |
-| **Email Address** | *(add your email)* |
-| **GitHub Username** | *(add your GitHub username)* |
+| **Full Name** | Nikhil Mamilla |
+| **Email** | 23211a05m7@bvrit.ac.in |
+| **Current Organisation & Role** | Student — Web Development Intern Applicant |
 | **Selected Website** | [excellenceinternationalschool.com](https://excellenceinternationalschool.com/) |
-| **Live Demo Link** | *(add your Vercel URL after deploying)* |
+| **GitHub Profile** | *(add your GitHub profile URL)* |
+| **Repository Link** | *(add your GitHub repo URL)* |
+| **Live Demo (Vercel)** | *(add your Vercel URL after deploying)* |
+| **LinkedIn** | *(add your LinkedIn URL)* |
 
 ---
 
 ## Project Overview
 
-A complete modern redesign of the **Excellence International School, Aligarh** website. The original site was built on WordPress/Elementor with a heavy, slow, and non-responsive layout. This redesign replaces it with a fast, clean, fully responsive React + Tailwind CSS SPA with smooth animations, proper routing, and a professional design system.
+A complete modern redesign of the **Excellence International School, Aligarh** website. The original site was built on WordPress/Elementor — heavy, slow, and non-responsive. This redesign replaces it with a fast, clean, fully responsive **React + Tailwind CSS SPA** with smooth animations, proper routing, and a professional design system.
 
 ---
 
@@ -29,119 +32,61 @@ A complete modern redesign of the **Excellence International School, Aligarh** w
 |---|---|
 | **React 18** | Component-based UI architecture |
 | **Vite** | Fast dev server and production bundler |
-| **React Router v6** | Client-side routing with nested routes |
+| **React Router v6** | Client-side routing with 12 dedicated pages |
 | **Tailwind CSS v3** | Utility-first styling with custom design tokens |
-| **IntersectionObserver API** | Scroll-reveal animations (no library dependency) |
+| **IntersectionObserver API** | Scroll-reveal animations (zero library overhead) |
 | **Vercel** | Deployment and hosting |
+
+---
+
+## Pages Built
+
+| Route | Page |
+|---|---|
+| `/` | Home |
+| `/about` | About Us |
+| `/academics` | Academics Overview |
+| `/academics/pre-primary` | Pre Primary School |
+| `/academics/primary` | Primary School |
+| `/academics/middle` | Middle School |
+| `/academics/daycare` | Daycare |
+| `/admissions` | Admission Enquiry + Procedure |
+| `/facilities` | School Facilities |
+| `/gallery` | Photo Gallery with Lightbox |
+| `/blog` | Blog Listing + 3 Full Post Pages |
+| `/contact` | Contact Us |
 
 ---
 
 ## Key Improvements Made
 
-### 1. Complete Page Architecture
-The original had everything crammed into one long homepage. This redesign has **12 dedicated pages** with clean URLs:
-
-- `/` — Home
-- `/about` — About Us
-- `/academics` — Academics overview
-- `/academics/pre-primary` — Pre Primary School
-- `/academics/primary` — Primary School
-- `/academics/middle` — Middle School
-- `/academics/daycare` — Daycare
-- `/admissions` — Admission Enquiry Form + Procedure
-- `/facilities` — School Facilities
-- `/gallery` — Photo Gallery with lightbox
-- `/blog` — Blog listing + 3 full blog post pages
-- `/contact` — Contact Us
-
-### 2. Modern Design System
-- Custom color palette: deep indigo (`primary-900`) + gold accent
-- Typography: `Plus Jakarta Sans` + `Playfair Display` (serif headings)
-- Consistent spacing, card shadows, border radii, and hover effects
-- Animated wave dividers between sections
-
-### 3. Responsive Navigation
-- Desktop: sticky navbar with hover dropdown menus (Academics + Admissions) with hover-bridge fix so dropdowns don't close prematurely
-- Mobile: full-screen overlay menu with blur backdrop, accordion sub-menus
-
-### 4. Performance
-- Lazy-loaded gallery images
-- No heavy animation libraries — pure CSS transitions + IntersectionObserver
-- Vite code splitting per route
-
-### 5. Accessibility
-- Semantic HTML (`<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`)
-- `aria-label`, `aria-expanded` on all interactive controls
-- Alt text on every image
-- Keyboard-navigable gallery lightbox (arrow keys + Escape)
-- Custom styled scrollbar
-
-### 6. Gallery
-- Masonry column layout (2 → 3 → 4 columns)
-- Full lightbox with keyboard navigation and prev/next controls
-
-### 7. Blog
-- 3 full blog posts with complete article pages, FAQ accordions, comment forms, and navigation between posts
-
-### 8. Forms
-- Admission Enquiry Form with grade/session selector
-- Contact "Connect With Us" form
-- Smooth hash-scroll to form sections from navbar links
+1. **12 dedicated pages** — original had everything crammed into one long homepage; every section now has its own clean URL
+2. **Modern design system** — deep indigo + gold palette, `Plus Jakarta Sans` + `Playfair Display` typography, soft shadows, and animated wave section dividers
+3. **Responsive navigation** — sticky navbar with hover-bridge dropdown fix, mobile full-screen overlay menu with blur backdrop
+4. **Scroll-reveal animations** — `IntersectionObserver`-based `Reveal` component, no animation library needed
+5. **Masonry gallery + lightbox** — keyboard navigable (arrow keys + Escape), lazy-loaded images
+6. **3 full blog posts** — complete article pages with FAQ accordions, comment forms, and post navigation
+7. **Working forms** — Admission Enquiry Form with grade selector, Contact "Connect With Us" form, smooth hash-scroll from navbar links
+8. **Custom scrollbar** — styled to match brand colors (primary navy + gold on hover)
+9. **Clean SVG floating action buttons** — WhatsApp + Phone, crisp at all resolutions
+10. **Fully accessible** — semantic HTML, `aria-label`/`aria-expanded`, alt text on all images
 
 ---
 
 ## Project Structure
 
 ```
-nikhil/
-├── public/
-│   └── favicon.png
-├── src/
-│   ├── assets/
-│   │   ├── blog/          # blog images
-│   │   ├── gallery/       # school gallery photos
-│   │   └── images/        # UI images & icons
-│   ├── components/
-│   │   ├── EnquiryForm.jsx
-│   │   ├── FaqAccordion.jsx
-│   │   ├── FloatingActions.jsx
-│   │   ├── Footer.jsx
-│   │   ├── HeroBannerSlider.jsx
-│   │   ├── icons.jsx
-│   │   ├── ImageCard.jsx
-│   │   ├── Navbar.jsx
-│   │   ├── Reveal.jsx
-│   │   ├── ScrollToTop.jsx
-│   │   ├── SectionHeading.jsx
-│   │   └── ValuesStrip.jsx
-│   ├── data/
-│   │   ├── content.js     # academic stages, WHY_US, FAQs, testimonials
-│   │   └── site.js        # school contact info, nav links, social links
-│   ├── pages/
-│   │   ├── About.jsx
-│   │   ├── Academics.jsx
-│   │   ├── Admissions.jsx
-│   │   ├── Blog.jsx
-│   │   ├── BlogPost1.jsx
-│   │   ├── BlogPost2.jsx
-│   │   ├── BlogPost3.jsx
-│   │   ├── Contact.jsx
-│   │   ├── Daycare.jsx
-│   │   ├── Facilities.jsx
-│   │   ├── Gallery.jsx
-│   │   ├── Home.jsx
-│   │   ├── Middle.jsx
-│   │   ├── NotFound.jsx
-│   │   ├── PrePrimary.jsx
-│   │   └── Primary.jsx
-│   ├── App.jsx            # route table + shared layout
-│   ├── index.css          # Tailwind directives + custom scrollbar
-│   └── main.jsx
-├── index.html
-├── package.json
-├── postcss.config.js
-├── tailwind.config.js
-└── vite.config.js
+src/
+├── assets/
+│   ├── blog/          # blog post images
+│   ├── gallery/       # school gallery photos
+│   └── images/        # UI images
+├── components/        # Navbar, Footer, EnquiryForm, Reveal, FloatingActions, icons…
+├── data/
+│   ├── content.js     # academic stages, FAQs, testimonials
+│   └── site.js        # school info, nav links, social links
+├── pages/             # one file per route (16 pages)
+└── App.jsx            # route table + shared layout
 ```
 
 ---
@@ -149,36 +94,24 @@ nikhil/
 ## Getting Started
 
 ```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Production build
-npm run build
-
-# Preview production build locally
-npm run preview
+npm install       # install dependencies
+npm run dev       # start local dev server at localhost:5173
+npm run build     # production build → dist/
+npm run preview   # preview production build locally
 ```
-
----
 
 ## Deployment (Vercel)
 
-1. Push this repository to GitHub
-2. Go to [vercel.com](https://vercel.com) → New Project → Import repository
-3. Framework preset: **Vite**
-4. Build command: `npm run build`
-5. Output directory: `dist`
-6. Deploy — live URL will be generated automatically
+1. Push repo to GitHub
+2. Import on [vercel.com](https://vercel.com) → Framework: **Vite** → Build: `npm run build` → Output: `dist`
+3. Deploy — live URL generated automatically
 
 ---
 
-## Screenshots
+## Self Declaration
 
-> *(Add screenshots of Home, Academics, Gallery, and Contact pages after deployment)*
+I confirm that this project is my own work. I have not copied another candidate's project. I understand that plagiarism or submitting someone else's work may result in immediate disqualification.
 
 ---
 
-*Built with ❤️ for the Dettroin Full Stack Developer Internship — Round 1*
+*Built for the Dettroin Web Development Internship — Round 1 | Team Dettroin*
