@@ -11,10 +11,10 @@ const SOCIAL_LINKS = [
 ]
 
 const ACADEMICS_MENU = [
-  { label: 'Pre Primary School', to: '/academics#pre-primary' },
-  { label: 'Primary School', to: '/academics#primary' },
-  { label: 'Middle School', to: '/academics#middle' },
-  { label: 'Daycare', to: '/academics#daycare' },
+  { label: 'Pre Primary School', to: '/academics/pre-primary' },
+  { label: 'Primary School', to: '/academics/primary' },
+  { label: 'Middle School', to: '/academics/middle' },
+  { label: 'Daycare', to: '/academics/daycare' },
 ]
 
 const ADMISSIONS_MENU = [
@@ -101,10 +101,13 @@ export default function Navbar() {
               <NavLink to="/academics" className={({ isActive }) => `inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-extrabold transition ${isActive ? 'bg-primary-900 text-white shadow-card' : 'text-ink-700 hover:bg-primary-50 hover:text-primary-800'}`}>
                 Academics <span className="text-xs transition group-hover:rotate-180">▾</span>
               </NavLink>
-              <div className="invisible absolute left-1/2 top-full z-50 mt-2 w-52 -translate-x-1/2 translate-y-2 rounded-xl border border-primary-100/60 bg-white py-1.5 opacity-0 shadow-lg transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-                {ACADEMICS_MENU.map((item) => (
-                  <NavLink key={item.to} to={item.to} className="block px-4 py-2 text-sm font-semibold text-ink-700 transition hover:bg-gold-50 hover:text-primary-900">{item.label}</NavLink>
-                ))}
+              {/* pt-2 bridge prevents gap from closing the dropdown */}
+              <div className="invisible absolute left-1/2 top-full z-50 w-52 -translate-x-1/2 translate-y-2 pt-2 opacity-0 transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                <div className="rounded-xl border border-primary-100/60 bg-white py-1.5 shadow-lg">
+                  {ACADEMICS_MENU.map((item) => (
+                    <NavLink key={item.to} to={item.to} className="block px-4 py-2.5 text-sm font-semibold text-ink-700 transition hover:bg-gold-50 hover:text-primary-900">{item.label}</NavLink>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -112,10 +115,13 @@ export default function Navbar() {
               <NavLink to="/admissions" className={({ isActive }) => `inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-extrabold transition ${isActive ? 'bg-primary-900 text-white shadow-card' : 'text-ink-700 hover:bg-primary-50 hover:text-primary-800'}`}>
                 Admissions <span className="text-xs transition group-hover:rotate-180">▾</span>
               </NavLink>
-              <div className="invisible absolute left-1/2 top-full z-50 mt-2 w-52 -translate-x-1/2 translate-y-2 rounded-xl border border-primary-100/60 bg-white py-1.5 opacity-0 shadow-lg transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-                {ADMISSIONS_MENU.map((item) => (
-                  <NavLink key={item.to} to={item.to} className="block px-4 py-2 text-sm font-semibold text-ink-700 transition hover:bg-gold-50 hover:text-primary-900">{item.label}</NavLink>
-                ))}
+              {/* pt-2 bridge prevents gap from closing the dropdown */}
+              <div className="invisible absolute left-1/2 top-full z-50 w-52 -translate-x-1/2 translate-y-2 pt-2 opacity-0 transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                <div className="rounded-xl border border-primary-100/60 bg-white py-1.5 shadow-lg">
+                  {ADMISSIONS_MENU.map((item) => (
+                    <NavLink key={item.to} to={item.to} className="block px-4 py-2.5 text-sm font-semibold text-ink-700 transition hover:bg-gold-50 hover:text-primary-900">{item.label}</NavLink>
+                  ))}
+                </div>
               </div>
             </div>
 
