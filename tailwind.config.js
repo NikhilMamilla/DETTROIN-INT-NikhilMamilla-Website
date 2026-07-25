@@ -36,6 +36,7 @@ export default {
       },
       fontFamily: {
         display: ['"Plus Jakarta Sans"', 'sans-serif'],
+        serif: ['"Playfair Display"', 'serif'],
         body: ['"Inter"', 'sans-serif'],
       },
       boxShadow: {

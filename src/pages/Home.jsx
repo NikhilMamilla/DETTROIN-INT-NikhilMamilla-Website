@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import HeroBannerSlider from '../components/HeroBannerSlider'
 import Reveal from '../components/Reveal'
@@ -12,6 +13,8 @@ import { ACADEMIC_STAGES, WHY_US } from '../data/content'
 import { SITE } from '../data/site'
 
 import heroImg from '../assets/gallery/27.jpg'
+import heroImg2 from '../assets/gallery/21.jpg'
+import heroImg3 from '../assets/gallery/22.jpg'
 import aboutImg from '../assets/gallery/20.jpg'
 import visionMissionImg from '../assets/images/Vision-Mission.png'
 
@@ -103,6 +106,87 @@ const DEVELOPMENT_AREAS = [
   },
 ]
 
+function StackedCards() {
+  const [hovered, setHovered] = useState(false)
+
+  const card3Style = hovered
+    ? { transform: 'rotate(-28deg) translateX(-90px) translateY(20px)', zIndex: 1 }
+    : { transform: 'rotate(-8deg) translateX(-28px) translateY(16px)', zIndex: 1 }
+
+  const card2Style = hovered
+    ? { transform: 'rotate(-14deg) translateX(-48px) translateY(10px)', zIndex: 2 }
+    : { transform: 'rotate(-3deg) translateX(-10px) translateY(6px)', zIndex: 2 }
+
+  const card1Style = hovered
+    ? { transform: 'rotate(0deg) translateX(0) translateY(0) scale(1.04)', zIndex: 3 }
+    : { transform: 'rotate(0deg) translateX(0) translateY(0) scale(1)', zIndex: 3 }
+
+  return (
+    <div
+      className="relative h-[300px] w-full cursor-pointer sm:h-[360px] lg:h-[420px]"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      {/* Card 3 — back */}
+      <div
+        className="absolute inset-0 overflow-hidden rounded-[24px] border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.5)]"
+        style={{ ...card3Style, transition: 'transform 0.7s cubic-bezier(0.34,1.56,0.64,1)', transformOrigin: 'bottom right' }}
+      >
+        <img src={heroImg3} alt="School" className="h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-900/90 via-primary-900/40 to-transparent" />
+        <div className="absolute bottom-5 left-5 right-5">
+          <span className="inline-block rounded-full border border-gold-400/30 bg-gold-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-gold-300 backdrop-blur-md">Arts & Culture</span>
+          <p className="mt-2 text-xl font-extrabold text-white">Creative Expression</p>
+        </div>
+      </div>
+
+      {/* Card 2 — middle */}
+      <div
+        className="absolute inset-0 overflow-hidden rounded-[24px] border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.5)]"
+        style={{ ...card2Style, transition: 'transform 0.7s cubic-bezier(0.34,1.56,0.64,1) 0.05s', transformOrigin: 'bottom right' }}
+      >
+        <img src={heroImg2} alt="School" className="h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-900/90 via-primary-900/40 to-transparent" />
+        <div className="absolute bottom-5 left-5 right-5">
+          <span className="inline-block rounded-full border border-gold-400/30 bg-gold-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-gold-300 backdrop-blur-md">Sports & Activities</span>
+          <p className="mt-2 text-xl font-extrabold text-white">Beyond Academics</p>
+        </div>
+      </div>
+
+      {/* Card 1 — front */}
+      <div
+        className="absolute inset-0 overflow-hidden rounded-[24px] border border-white/10 shadow-[0_24px_64px_rgba(0,0,0,0.6)]"
+        style={{ ...card1Style, transition: 'transform 0.7s cubic-bezier(0.34,1.56,0.64,1) 0.1s' }}
+      >
+        <img
+          src={heroImg}
+          alt="Students at Excellence International School"
+          className="h-full w-full object-cover"
+          style={{ transition: 'transform 1s ease-out', transform: hovered ? 'scale(1.06)' : 'scale(1)' }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-900/95 via-primary-900/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-6">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="inline-block rounded-full border border-gold-400/30 bg-gold-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-gold-300 backdrop-blur-md">Featured</span>
+            <span className="text-[10px] font-bold uppercase tracking-widest text-white/50">Aligarh, UP</span>
+          </div>
+          <h3 className="text-2xl font-extrabold text-white leading-tight mb-4">Excellence International School</h3>
+          <div className="grid grid-cols-2 gap-3 pt-4 border-t border-white/10">
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-white/50 mb-1">Programs</p>
+              <p className="text-lg font-extrabold text-white tracking-wide">PG – VIII</p>
+            </div>
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-white/50 mb-1">Est.</p>
+              <p className="text-lg font-extrabold text-gold-400 tracking-wide">2015</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function Home() {
   return (
     <>
@@ -111,81 +195,104 @@ export default function Home() {
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-primary-900 text-white">
-        <div className="container-page grid items-center gap-12 py-16 lg:grid-cols-2 lg:py-24">
-          <div className="animate-fade-up">
+        <div className="container-page grid items-center gap-8 py-12 lg:grid-cols-2 lg:py-20">
+          <div className="animate-fade-up text-center lg:text-left">
             <span className="inline-flex items-center gap-2 rounded-full bg-gold-400/15 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-gold-300">
               Admissions Open {SITE.admissionSession}
             </span>
-            <h1 className="mt-5 text-4xl font-extrabold leading-tight sm:text-5xl">
+            <h1 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
               {SITE.tagline}
             </h1>
-            <p className="mt-5 max-w-lg text-base leading-relaxed text-primary-100">
+            <p className="mt-4 text-sm leading-relaxed text-primary-100 sm:text-base">
               {SITE.name} is one of the best schools in Aligarh, Uttar Pradesh — known for quality
               learning, discipline, and holistic development from {SITE.admissionRange}.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                to="/admissions"
-                className="inline-flex items-center gap-2 rounded-full bg-gold-400 px-6 py-3.5 text-sm font-bold text-ink-900 shadow-soft transition hover:bg-gold-500"
-              >
+            <div className="mt-6 flex flex-wrap justify-center gap-3 lg:justify-start">
+              <Link to="/admissions" className="inline-flex items-center gap-2 rounded-full bg-gold-400 px-5 py-3 text-sm font-bold text-ink-900 shadow-soft transition hover:bg-gold-500">
                 Apply for Admission <IconArrowRight className="h-4 w-4" />
               </Link>
-              <Link
-                to="/about"
-                className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-bold text-white transition hover:bg-white/10"
-              >
+              <Link to="/about" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/10">
                 Discover More
               </Link>
             </div>
-
-            <dl className="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-4">
+            <dl className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
               {HIGHLIGHTS.map(({ icon: Icon, label }) => (
-                <div key={label} className="flex flex-col gap-2">
-                  <Icon className="h-7 w-7 text-gold-300" />
-                  <dd className="text-sm font-semibold text-primary-100">{label}</dd>
+                <div key={label} className="flex flex-col items-center gap-2 lg:items-start">
+                  <Icon className="h-6 w-6 text-gold-300" />
+                  <dd className="text-xs font-semibold text-primary-100 text-center lg:text-left">{label}</dd>
                 </div>
               ))}
             </dl>
           </div>
 
-          <div className="relative mx-auto w-full max-w-md animate-fade-up lg:justify-self-end" style={{ animationDelay: '150ms' }}>
-            <div className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-gold-400/10 blur-2xl" />
-            <img
-              src={heroImg}
-              alt="Students at Excellence International School"
-              className="aspect-[4/5] w-full rounded-[2rem] object-cover shadow-soft"
-            />
+          <div className="relative mx-auto w-full max-w-xs animate-fade-up sm:max-w-sm lg:ml-auto lg:mr-0 lg:max-w-md lg:translate-x-16 lg:translate-y-8" style={{ animationDelay: '150ms' }}>
+            <StackedCards />
           </div>
         </div>
-        <svg viewBox="0 0 1440 60" className="block w-full text-white" fill="currentColor">
-          <path d="M0 60 L1440 60 L1440 0 Q 720 60 0 0 Z" />
-        </svg>
+
+        {/* Animated wave */}
+        <div className="relative w-full overflow-hidden leading-none" style={{ height: '80px' }}>
+          <svg
+            viewBox="0 0 1440 80"
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute bottom-0 w-[200%]"
+            preserveAspectRatio="none"
+            style={{ height: '80px', animation: 'wavePan 6s linear infinite' }}
+          >
+            <path
+              d="M0,40 C120,70 240,10 360,40 C480,70 600,10 720,40 C840,70 960,10 1080,40 C1200,70 1320,10 1440,40 C1560,70 1680,10 1800,40 C1920,70 2040,10 2160,40 C2280,70 2400,10 2520,40 C2640,70 2760,10 2880,40 L2880,80 L0,80 Z"
+              fill="white"
+            />
+          </svg>
+          <svg
+            viewBox="0 0 1440 80"
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute bottom-0 w-[200%]"
+            preserveAspectRatio="none"
+            style={{ height: '80px', opacity: 0.4, animation: 'wavePan 9s linear infinite reverse' }}
+          >
+            <path
+              d="M0,55 C90,30 180,65 360,50 C540,35 720,65 900,48 C1080,30 1260,65 1440,50 C1620,35 1800,65 1980,50 C2160,30 2340,65 2520,50 C2700,35 2820,60 2880,55 L2880,80 L0,80 Z"
+              fill="white"
+            />
+          </svg>
+          <style>{`
+            @keyframes wavePan {
+              0%   { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+          `}</style>
+        </div>
       </section>
 
       {/* About teaser + enquiry */}
-      <section className="container-page grid gap-12 py-20 lg:grid-cols-[1.2fr_1fr] lg:items-start">
+      <section className="container-page grid gap-10 py-16 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:py-20">
         <Reveal>
-          <p className="mb-3 text-sm font-bold uppercase tracking-widest text-gold-500">
-            Best School in {SITE.city}
-          </p>
-          <h2 className="text-3xl font-extrabold text-primary-900 sm:text-4xl">
-            Excellence International School — Shaping Future Leaders Through Quality Education
+          <div className="flex items-center gap-3 mb-5">
+            <span className="block h-0.5 w-8 bg-gold-500 rounded-full" />
+            <p className="text-xs font-bold tracking-[0.3em] text-gold-500 uppercase">
+              Best School in {SITE.city}
+            </p>
+          </div>
+
+          <h2 className="font-serif font-bold leading-[1.3] text-2xl sm:text-3xl lg:text-5xl">
+            <span className="text-primary-900">Excellence International School – </span>
+            <span className="italic text-primary-600">Shaping Future Leaders </span>
+            <span className="not-italic text-primary-900">Through Quality Education</span>
           </h2>
-          <p className="mt-5 leading-relaxed text-ink-400">
-            Recognized as a top school in Aligarh, the institution is dedicated to nurturing young
-            minds with knowledge, confidence, creativity, and strong ethical values. The school
-            focuses on building a strong academic foundation while encouraging innovation,
-            leadership, and personal growth.
-          </p>
-          <p className="mt-4 leading-relaxed text-ink-400">
-            Education here is not limited to textbooks — every learner receives personalized
-            attention and encouragement to explore their potential and achieve their goals.
-          </p>
-          <img
-            src={aboutImg}
-            alt="Students learning at Excellence International School"
-            className="mt-8 h-64 w-full rounded-2xl object-cover shadow-card"
-          />
+
+          <div className="mt-6 space-y-4 text-sm leading-relaxed text-ink-500 sm:text-[0.95rem]">
+            <p>
+              <span className="font-bold text-ink-800">Excellence International School</span> is one of the{' '}
+              <span className="font-semibold text-primary-700 underline decoration-gold-400 underline-offset-2">best schools in Aligarh</span>, Uttar Pradesh, known for quality learning, discipline, and holistic development. The institution is dedicated to nurturing young minds with knowledge, confidence, creativity, and strong ethical values for a bright future.
+            </p>
+            <p>
+              The school focuses on building a strong academic foundation while encouraging innovation, leadership, and personal growth. Every student is guided to explore their potential and develop the skills needed to succeed in life.
+            </p>
+            <p>
+              Education at Excellence International School is not limited to textbooks. It aims to create responsible individuals who are prepared for academic success as well as real-world challenges.
+            </p>
+          </div>
         </Reveal>
 
         <Reveal delay={150}>
