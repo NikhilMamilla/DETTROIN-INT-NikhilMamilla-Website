@@ -301,96 +301,205 @@ export default function Home() {
       </section>
 
       {/* Vision and mission */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-gold-50 via-white to-primary-50 py-20">
-        <div className="absolute left-0 top-10 h-40 w-40 rounded-full bg-gold-300/20 blur-3xl" />
-        <div className="absolute bottom-0 right-0 h-56 w-56 rounded-full bg-primary-300/20 blur-3xl" />
+      <section className="relative min-h-screen overflow-hidden bg-primary-900 flex flex-col justify-center py-24">
+        <div className="absolute -left-40 top-0 h-[500px] w-[500px] rounded-full bg-gold-400/10 blur-3xl" />
+        <div className="absolute -right-40 bottom-0 h-[500px] w-[500px] rounded-full bg-primary-500/20 blur-3xl" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold-400/30 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
         <div className="container-page relative">
+
+          {/* Header */}
           <Reveal>
-            <SectionHeading
-              center
-              eyebrow="About Excellence International School"
-              title="Our Vision, Mission & Promise"
-              subtitle="A modern learning environment where children grow with knowledge, discipline, creativity, and strong character."
-            />
+            <div className="mb-4 text-center">
+              <span className="inline-block rounded-full border border-gold-400/20 bg-gold-400/10 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.35em] text-gold-400">
+                About Excellence International School
+              </span>
+              <h2 className="mt-5 font-serif text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+                Our Vision, Mission <span className="italic text-gold-400">&amp; Promise</span>
+              </h2>
+              <div className="mx-auto mt-4 h-0.5 w-16 rounded-full bg-gold-400/50" />
+            </div>
+            <div className="mx-auto mt-6 max-w-3xl space-y-3 text-center text-sm leading-relaxed text-primary-200 sm:text-base">
+              <p>
+                <span className="font-bold text-white">Excellence International School, Aligarh</span> is dedicated to providing modern education with a balanced approach to academics, co-curricular activities, and character development.
+              </p>
+              <p>
+                The school believes that education should develop knowledge, critical thinking, discipline, and life skills. With a student-focused approach and supportive learning environment, the institution helps children grow into confident and responsible individuals.
+              </p>
+            </div>
           </Reveal>
 
-          <div className="mt-12 grid gap-8 lg:grid-cols-[1.05fr_1fr] lg:items-stretch">
+          {/* Image + Vision/Mission */}
+          <div className="mt-16 grid gap-10 lg:grid-cols-2 lg:items-stretch">
+
+            {/* Image */}
             <Reveal delay={100}>
-              <div className="group relative h-full overflow-hidden rounded-[2rem] bg-white p-3 shadow-soft ring-1 ring-primary-100/70">
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary-900/15 via-transparent to-gold-300/20 opacity-0 transition group-hover:opacity-100" />
+              <div className="group relative h-full min-h-[380px] overflow-hidden rounded-2xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
                 <img
                   src={visionMissionImg}
-                  alt="Vision and mission of Excellence International School"
-                  className="h-full min-h-[300px] w-full rounded-[1.5rem] object-cover transition duration-500 group-hover:scale-[1.03]"
+                  alt="Vision and Mission"
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                 />
-                <div className="absolute bottom-6 left-6 right-6 rounded-2xl bg-white/90 p-5 shadow-card backdrop-blur">
-                  <p className="text-sm font-bold uppercase tracking-widest text-gold-600">Student-first approach</p>
-                  <p className="mt-2 text-lg font-extrabold text-primary-900">
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-primary-900/10 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold-400">Student-first approach</span>
+                  <p className="mt-2 font-serif text-xl font-bold italic text-white leading-snug">
                     Learning that shapes confident and responsible individuals.
                   </p>
                 </div>
               </div>
             </Reveal>
 
+            {/* Vision + Mission stacked */}
             <Reveal delay={200}>
-              <div className="grid h-full gap-6">
-                <div className="rounded-[2rem] bg-primary-900 p-8 text-white shadow-soft">
-                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gold-400 text-primary-900 shadow-card">
-                    <IconBook className="h-6 w-6" />
+              <div className="flex h-full flex-col gap-6">
+
+                {/* Vision */}
+                <div className="flex-1 rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gold-400 text-primary-900 shadow-card">
+                      <IconBook className="h-5 w-5" />
+                    </span>
+                    <h3 className="font-serif text-2xl font-bold italic text-gold-400">Vision</h3>
                   </div>
-                  <h3 className="mt-5 text-2xl font-extrabold">Our Vision</h3>
-                  <p className="mt-3 leading-relaxed text-primary-100">
-                    To create confident, responsible, and innovative individuals who contribute
-                    positively to society and lead with knowledge, compassion, and purpose.
+                  <p className="text-sm leading-relaxed text-primary-100 sm:text-base">
+                    To create confident, responsible, and innovative individuals who contribute positively to society and lead with knowledge, compassion, and purpose.
                   </p>
                 </div>
 
-                <div className="rounded-[2rem] bg-white p-8 shadow-soft ring-1 ring-primary-100/70">
-                  <h3 className="text-2xl font-extrabold text-primary-900">Our Mission</h3>
-                  <ul className="mt-5 grid gap-3">
+                {/* Mission */}
+                <div className="flex-[2] rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-700 text-gold-300 shadow-card">
+                      <IconSpark className="h-5 w-5" />
+                    </span>
+                    <h3 className="font-serif text-2xl font-bold italic text-white">Mission</h3>
+                  </div>
+                  <ul className="space-y-2.5">
                     {MISSION_POINTS.map((point) => (
-                      <li key={point} className="flex items-start gap-3 text-sm font-semibold text-ink-600 sm:text-base">
-                        <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold-100 text-xs font-extrabold text-gold-700">
-                          ✓
-                        </span>
+                      <li key={point} className="flex items-start gap-3 text-sm leading-relaxed text-primary-100 sm:text-base">
+                        <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold-400/20 text-[10px] font-bold text-gold-400">✓</span>
                         {point}
                       </li>
                     ))}
                   </ul>
+                  <p className="mt-5 text-sm font-semibold text-white sm:text-base">
+                    Every learner receives personalized attention and encouragement to achieve their goals.
+                  </p>
+                  <Link to="/about" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-gold-400 hover:text-gold-300 transition">
+                    Learn more about us <IconArrowRight className="h-4 w-4" />
+                  </Link>
                 </div>
+
               </div>
             </Reveal>
           </div>
+
         </div>
       </section>
 
-      {/* Academic stages */}
-      <section className="bg-ink-50 py-20">
-        <div className="container-page">
-          <Reveal>
-            <SectionHeading
-              center
-              eyebrow="Academics"
-              title="A Learning Journey for Every Stage"
-              subtitle="Age-appropriate learning methods that help children build strong academic skills, confidence, and personal growth."
-            />
-          </Reveal>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {ACADEMIC_STAGES.map((stage, i) => (
-              <Reveal key={stage.id} delay={i * 100}>
-                <ImageCard image={stage.image} title={stage.title} description={stage.summary} />
-              </Reveal>
-            ))}
-          </div>
-          <div className="mt-10 text-center">
-            <Link
-              to="/academics"
-              className="inline-flex items-center gap-2 font-bold text-primary-700 hover:text-primary-800"
-            >
-              Explore all academic stages <IconArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+      {/* Academic stages — sticky stack */}
+      <section className="bg-white">
+        {/* Header */}
+        <div className="container-page py-14 text-center sm:py-16">
+          <span className="text-xs font-bold uppercase tracking-[0.3em] text-gold-500">Academics</span>
+          <h2 className="mt-3 font-serif text-3xl font-bold text-primary-900 sm:text-4xl">Academic Stages</h2>
+          <div className="mx-auto mt-3 h-0.5 w-14 rounded-full bg-gold-400" />
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-ink-500 sm:text-base">
+            At <span className="font-bold text-ink-800">Excellence International School</span>, the academic journey is structured to support students at every stage of their development. Each stage focuses on age-appropriate learning methods that help children build strong academic skills, confidence, and personal growth.
+          </p>
+        </div>
+
+        {/* Sticky stack cards */}
+        <div className="relative">
+          {[
+            {
+              ...ACADEMIC_STAGES[0],
+              intro: 'Early childhood education focuses on nurturing curiosity, creativity, and basic learning abilities in a joyful environment.',
+              focusLabel: 'Key focus areas include:',
+              points: ['Play-based learning','Language development','Basic numeracy skills','Social interaction','Creative exploration'],
+              footer: 'Children learn through activities, storytelling, games, and interactive sessions that make learning enjoyable and engaging.',
+            },
+            {
+              ...ACADEMIC_STAGES[1],
+              intro: 'Primary education is designed to strengthen core academic skills while encouraging curiosity and independent learning.',
+              focusLabel: 'The primary stage focuses on:',
+              points: ['Reading and writing skills','Fundamental mathematics','Basic science concepts','Moral values and good habits','Classroom discipline and responsibility'],
+              footer: 'Students gradually develop critical thinking, problem-solving abilities, and better understanding of academic subjects.',
+            },
+            {
+              ...ACADEMIC_STAGES[2],
+              intro: 'Middle school prepares students for advanced academic learning while developing analytical thinking and responsibility.',
+              focusLabel: 'Key areas of focus include:',
+              points: ['Advanced reading and writing skills','Concept-based mathematics','Science exploration and practical understanding','Social studies and general awareness','Communication and presentation skills'],
+              footer: 'Students are encouraged to ask questions, explore ideas, and participate actively in classroom discussions.',
+            },
+            {
+              ...ACADEMIC_STAGES[3],
+              intro: null,
+              introRich: <>The <span className="font-bold text-ink-800">Daycare facility at Excellence International School</span> provides a safe, caring, and supportive environment for young children while their parents are at work.</>,
+              focusLabel: 'The daycare program includes:',
+              points: ['Safe and supervised environment','Play and activity-based engagement','Rest and relaxation time','Interactive learning activities','Social interaction with peers'],
+              footer: 'Children receive proper care, attention, and engaging activities that support their emotional, social, and cognitive development throughout the day.',
+            },
+          ].map((stage, i) => {
+            const isEven = i % 2 === 0
+            const colors = ['bg-white', 'bg-ink-50', 'bg-primary-50', 'bg-gold-50']
+            const isLast = i === 3
+            return (
+              <div
+                key={stage.id}
+                className="sticky"
+                style={{ top: `${60 + i * 14}px`, zIndex: 10 + i }}
+              >
+                <div className={`${colors[i]} border-t border-ink-100 shadow-[0_-6px_30px_rgba(0,0,0,0.07)]`}>
+                  <div className="container-page grid items-center gap-8 py-14 sm:gap-10 lg:grid-cols-2 lg:py-20">
+
+                    {/* Image */}
+                    <div className={`${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
+                      <div className="overflow-hidden rounded-2xl shadow-[0_8px_40px_rgba(28,35,84,0.12)]">
+                        <img src={stage.image} alt={stage.title} className="h-64 w-full object-cover transition duration-700 hover:scale-105 sm:h-80" />
+                      </div>
+                    </div>
+
+                    {/* Text */}
+                    <div className={`${isEven ? 'lg:order-1' : 'lg:order-2'} space-y-3`}>
+                      <span className="inline-block rounded-full bg-primary-900 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-gold-400">
+                        Stage {i + 1}
+                      </span>
+                      <h3 className="font-serif text-2xl font-bold text-primary-900 sm:text-3xl">{stage.title}</h3>
+                      <p className="text-sm leading-relaxed text-ink-500 sm:text-base">
+                        {stage.introRich || stage.intro}
+                      </p>
+                      {stage.focusLabel && (
+                        <p className="text-sm font-semibold text-ink-700 sm:text-base">{stage.focusLabel}</p>
+                      )}
+                      <ul className="space-y-1.5">
+                        {stage.points.map((pt) => (
+                          <li key={pt} className="flex items-start gap-2 text-sm text-ink-600 sm:text-base">
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary-600" />
+                            {pt}
+                          </li>
+                        ))}
+                      </ul>
+                      <p className="text-sm leading-relaxed text-ink-500 sm:text-base">{stage.footer}</p>
+
+                      {/* Button only on last card */}
+                      {isLast && (
+                        <div className="pt-4">
+                          <Link to="/academics" className="inline-flex items-center gap-2 rounded-full bg-primary-900 px-6 py-3 text-sm font-bold text-white transition hover:bg-primary-800">
+                            Explore All Academic Stages <IconArrowRight className="h-4 w-4" />
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            )
+          })}
         </div>
       </section>
 
